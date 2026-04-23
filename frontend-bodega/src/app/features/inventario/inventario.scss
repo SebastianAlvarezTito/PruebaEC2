@@ -1,0 +1,14 @@
+.container { padding: 2rem; font-family: 'Segoe UI', sans-serif; }
+header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; margin-bottom: 1.5rem; }
+.badge { background: #e3f2fd; color: #1976d2; padding: 5px 12px; border-radius: 20px; font-weight: bold; }
+table { width: 100%; border-collapse: collapse; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
+th { background: #1976d2; color: white; padding: 12px; text-align: left; }
+td { padding: 12px; border-bottom: 1px solid #eee; }
+.bold { font-weight: 600; color: #333; }
+.low-stock { color: #d32f2f; font-weight: bold; }
+.status-pill { padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; }
+.active { background: #c8e6c9; color: #2e7d32; }
+.inactive { background: #ffcdd2; color: #c62828; }
+.loader { text-align: center; padding: 2rem; color: #666; font-style: italic; }
+.btn-primary { background: #1976d2; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin-bottom: 1rem; }
+.btn-primary:hover { background: #1565c0; }
