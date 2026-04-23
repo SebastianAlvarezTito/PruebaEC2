@@ -1,0 +1,29 @@
+#docker-compose -f docker-compose/docker-compose-be.yml up -d
+#docker-compose -f docker-compose/docker-compose-be.yml down
+services:
+  backend:
+    build: 
+      context: .. 
+    container_name: api_peirano
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - TZ=America/Lima
+      - DB_HOST=db
+      - DB_USER=sa
+      - DB_PASSWORD=TuPasswordSeguro123
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - frontend_net
+      - backend_net
+
+networks:
+  # Al quitar 'external: true', Docker las crea automáticamente
+  frontend_net:
+    driver: bridge
+  backend_net:
+    driver: bridge

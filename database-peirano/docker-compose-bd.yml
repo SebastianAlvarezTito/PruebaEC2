@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  db:
+    build: .
+    container_name: sql_server_peirano
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=TuPasswordSeguro123
+      - TZ=America/Lima
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+    networks:
+      - backend_net
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "TuPasswordSeguro123", "-Q", "SELECT 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  backend_net:
+    # Esto es clave: si la red ya existe la usa, si no, la crea automáticamente
+    driver: bridge
+    name: backend_net
+
+volumes:
+  mssql_data:
+    driver: local
